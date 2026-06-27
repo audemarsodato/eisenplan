@@ -169,7 +169,12 @@ form input::placeholder {
         font-weight: bold;
         color: var(--text-color);
         cursor:grab; 
-        transition: scale 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        transition: scale 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, opacity 0.3s ease;
+}
+
+.task-card:hover {
+        opacity: 1;
+        background-color: rgba(255, 255, 255, 0.7);
 }
 
 .task-card .task-text {
