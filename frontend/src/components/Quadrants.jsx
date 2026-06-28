@@ -8,7 +8,7 @@ import useToastContext from '../hooks/useToastContext'
 import { isFull } from '../utilities'
 import userUserContext from '../hooks/useUserContext'
 
-export default function Quadrants() {
+export default function Quadrants({ onDelete }) {
         const { tasks, dispatch } = useTasksContext()
         const { user_id } = userUserContext()
         const { showToast } = useToastContext()
@@ -23,7 +23,7 @@ export default function Quadrants() {
         const displayTasks = (quadrantId) => tasks && 
                 tasks.filter(task => task.quadrant === quadrantId && task.status === 'pending')
                 .sort((taskA, taskB) => taskA.createdAt - taskB.createdAt)
-                .map((task, index) => <TaskCard key={task._id} task={task} isTopTask={index === 0}/>)
+                .map((task, index) => <TaskCard onDelete={onDelete} key={task._id} task={task} isTopTask={index === 0}/>)
         
         async function moveTask(taskId, targetQuadrant) {
                 const task = tasks.find(task => task._id === taskId)

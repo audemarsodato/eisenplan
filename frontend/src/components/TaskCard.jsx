@@ -3,30 +3,13 @@ import useTasksContext from '../hooks/useTasksContext'
 import { useEffect } from 'react'
 import userUserContext from '../hooks/useUserContext'
 
-export default function TaskCard({ task, isTopTask }) {
+export default function TaskCard({ task, isTopTask, onDelete }) {
         const { dispatch } = useTasksContext()
         const { user_id } = userUserContext()
         const { _id, title, quadrant } = task
         const { ref, listeners, attributes, isDragging, transform } = useDraggable({
                 id: _id
         })
-
-        async function deleteTask() {
-                dispatch({type: 'DELETE', payload: task})
-                try {
-                        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`, {
-                                method: 'DELETE',
-                                headers: {
-                                        user_id
-                                }
-                        })
-                        // const json = await response.json()
-                        // dispatch({type: 'DELETE', payload: json})
-                }
-                catch (error) {
-                        console.log(error)
-                }
-        }
 
         async function markTaskDone() {
                 dispatch({type: 'UPDATE', payload: {_id, status: 'done'}})
@@ -65,7 +48,7 @@ export default function TaskCard({ task, isTopTask }) {
                         <p className='task-text'>{title}</p>
                         <div className='actions'>
                                 <span className='material-symbols-outlined button' onClick={markTaskDone}>check</span>
-                                <span className='material-symbols-outlined button' onClick={deleteTask}>delete</span>
+                                <span className='material-symbols-outlined button' onClick={() => onDelete(task)}>delete</span>
                         </div>
                 </div>
         )

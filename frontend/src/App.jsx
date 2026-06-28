@@ -1,8 +1,9 @@
 import Quadrants from './components/Quadrants'
 import Form from './components/Form'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import useTasksContext from './hooks/useTasksContext'
 import userUserContext from './hooks/useUserContext'
+import DeleteModal from './components/DeleteModal'
 
 // TODOS:
 //      drag reordering for task
@@ -28,16 +29,16 @@ export default function App() {
                         
                         getTasks(storedUUID)
                 }
-                
                 initUser()
         }, [])
+
+        const [ taskToDelete, setTaskToDelete ] = useState(null)
         
         async function getTasks(user_id) {
                 try {
                         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks`, {
                                 headers: {
                                         user_id
-                                        // 'user_id': 'audemars'
                                 }
                         })
                         const json = await response.json()
@@ -46,13 +47,15 @@ export default function App() {
                 catch(error) {
                         console.log(error)
                 }
-
         }
 
         return (
                 <div className='app'>
-                        <Quadrants />
+                        <Quadrants onDelete={setTaskToDelete} />
                         <Form />
+                        {taskToDelete &&
+                                <DeleteModal taskToDelete={taskToDelete} closeModal={() => setTaskToDelete(null)}/>
+                        }
                 </div>
         )
 }

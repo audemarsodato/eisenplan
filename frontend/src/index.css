@@ -8,6 +8,7 @@
         --blue: #D1EDFF;
         --gray: #BDBDBD; 
         --white: rgba(250, 250, 250, 0.8);
+        --solid-white: #f7f7f7;
         --text-color: #2B2B2B;
         --bg: rgba(179, 179, 179, 0.8);
 
@@ -274,4 +275,86 @@ form input::placeholder {
         /* filter: brightness(1.07); */
         filter: brightness(0.85);
         transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+/* DELETE TASK CONFIRMATIOM MODAL */
+.delete-modal-window {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        background-color: rgba(0,0,0, 0.01);
+}
+
+.delete-modal-body {
+        background-color: var(--solid-white);
+        width: fit-content;
+        max-width: 550px;
+        min-width: 400px;
+        margin: auto;
+        padding: 16px;
+
+        border-radius: 4px;
+        box-shadow: 4px 8px 24px rgba(0,0,0,0.2);
+}
+
+.delete-modal-title {
+        color: var(--deep-red);
+}
+
+.modal-message {
+        opacity: 0.7;
+}
+
+.modal-task {
+        width: fit-content;
+        padding: 4px 4px 4px 8px;
+        border-left: 8px solid var(--deep-red);
+
+        /* background-color: var(--text-color); */
+        /* color: var(--deep-red); */
+        font-style: oblique;
+}
+
+.delete-modal-body .modal-buttons {
+        display: flex;
+        align-items: end;
+        justify-content: end;
+        gap: 10px;
+}
+
+.delete-task-button, .cancel-delete-button {
+        padding: 8px 16px;
+        border: none;
+        font-weight: 600;
+        border-radius: 4px;
+
+        cursor: pointer;
+}
+
+.delete-task-button {
+        background-color: var(--deep-red);
+        color: var(--solid-white);
+}
+
+.delete-task-button:hover {
+        background-color: var(--solid-white);
+        color: var(--deep-red);
+        font-weight: 900;
+}
+
+.cancel-delete-button {
+        background-color: var(--gray);
+        color: var(--text-color);
+}
+
+.cancel-delete-button:hover {
+        font-weight: 900;
+        background-color: var(--solid-white);
+        color: var(--text-color);
 }
