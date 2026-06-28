@@ -41,3 +41,5 @@ A full-stack task management application that organizes tasks using the **Eisenh
 - Edit existing tasks
 - Delete confirmation dialog
 - Dedicated completed tasks section
+- Parsing input and check for deadline
+- Entered task with deadline be automatically added in Q1
