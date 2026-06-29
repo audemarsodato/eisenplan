@@ -50,9 +50,36 @@ export default function Form() {
                 }
         }
 
+        let tasksSamples = [
+                'Finish drafting Chapter 1 by 9:00 AM Monday',
+                'Submit internship application before Friday',
+                'Review calculus notes by 8:00 PM tonight',
+                'Exercise for 30 minutes after work',
+                'Prepare presentation slides before 2:00 PM Tuesday',
+                'Call the dentist to schedule an appointment today',
+                'Refactor task API before deployment',
+                "Reply to client emails before lunch",
+                "Go for a 30-minute walk after dinner",
+                "Book a dental appointment this afternoon",
+                "Call Mom before 8:00 PM",
+                "Pay electricity bill before Friday"
+        ]
+        const [ placeholder, setPlaceholder ] = useState(() => {
+                return tasksSamples[Math.floor(Math.random() * tasksSamples.length)]
+        })
+
         return (
                 <form onSubmit={handleSubmit}>
-                        <input type='text' placeholder='New Task...' value={taskInput} onChange={event => setTaskInput(event.target.value)}/>
+                        <input type='text' placeholder={placeholder} value={taskInput} onChange={event => setTaskInput(event.target.value)}/>
+                        {/* 
+                        <p>Write clear, actionable tasks. Start with a verb and include a deadline when possible.</p>
+                                Structure of an actionable task is:
+                                        Action + Outcome + Deadline
+                                e.g. Finish drafting Chapter 1 by 9:00 AM Monday
+                                Proper actionable task answers: 
+                                        What? → Finish drafting Chapter 1
+                                        When? → By 9:00 AM Monday
+                        */}
                 </form>
         )
 }
