@@ -385,3 +385,58 @@ form {
                 transform: rotate(360deg);
         }
 }
+
+/* Mobile layout */
+@media (max-width: 600px) {
+        body {
+                background-color: var(--text-color);
+        }
+
+        .quadrants {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr;
+        }
+
+        .quadrant {
+                margin: 4px;
+        }
+
+        .quadrant-label {
+                font-size: 2.5rem;
+        }
+
+        .empty-quadrant-label {
+                font-size: 2rem;
+        }
+
+        form {
+                padding: 4px;
+        }
+
+        form input {
+                margin: 0;
+                padding: 12px 16px;
+        }
+
+        .task-card {
+                padding: 8px 16px;
+        }
+
+        .delete-modal-window {
+                background-color: rgba(0,0,0, 0.15);
+        }
+
+        .delete-modal-body {
+                width: 90%;
+                max-width: 580px;
+                min-width: 200px;
+        }
+
+        .modal-message {
+                font-size: 14px;
+        }
+
+        .modal-task {
+                font-size: 14px;
+        }
+}
