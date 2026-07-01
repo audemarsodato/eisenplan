@@ -386,7 +386,7 @@ form {
 }
 
 /* Mobile layout */
-@media (max-width: 600px) {
+@media (max-width: 685px) {
         body {
                 background-color: var(--text-color);
         }
